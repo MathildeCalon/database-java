@@ -60,8 +60,6 @@ public class Main {
                     .diploma_date(date)
                     .build();
 
-            Statement stmt = connection.createStatement();
-
             String request = "INSERT INTO student (lastname, firstname, class_number, diploma_date) VALUES (?, ?, ?, ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(1, student.getLastname());
@@ -125,7 +123,6 @@ public class Main {
             System.out.println("Quel est l'id de l'étudiant ?");
             int studentId = scanner.nextInt();
 
-            Statement stmt = connection.createStatement();
             String request = "DELETE FROM student WHERE student_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setInt(1, studentId);
@@ -157,7 +154,6 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             int chosedClass = scanner.nextInt();
 
-            Statement stmt = connection.createStatement();
             String request = "SELECT * FROM student WHERE class_number = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setInt(1, chosedClass);
